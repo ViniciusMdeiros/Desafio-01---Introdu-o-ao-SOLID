@@ -1,0 +1,211 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Solid Documentation",
+        "description": "@Desafio 01 - Introdução ao SOLID",
+        "version" : "1.0.0",
+        "contact": {
+            "email": "vinicius-medeiros2011@hotmail.com"
+        }
+    },
+    "paths": {
+        "/": {
+            "post": {
+                "tags": ["User"],
+                "summary": "Create a User",
+                "description": "Create a new User",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "User name sample",
+                                    "email": "User email sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    },
+                    "400" : {
+                        "description": "User Already exists!"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Users"],
+                "summary": "List all users",
+                "description": "List all users",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "Id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "Id": "User Id sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "format": "uuid"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "admin": {
+                                                "type": "boolean"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "format": "email"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }, 
+                    "400" : {
+                        "description": "User Not Exists or User Not Admin"
+                    }
+                }
+            }
+        },
+    "/:user_id/admin": {
+        "patch": {
+            "tags": ["admin"],
+                "summary": "User admin",
+                "description": "New User admin",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "Id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "Id": "User Id sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": ""
+                    },
+                    "404" : {
+                        "description": "User Not Exists"
+                    }
+                }
+        }
+    },
+    "/:user_id": {
+        "post": {
+            "tags": ["User"],
+                "summary": "User information",
+                "description": "All user information",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "Id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "Id": "User Id sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string",
+                                                "format": "uuid"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "admin": {
+                                                "type": "boolean"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "format": "email"
+                                            },
+                                            "created_at": {
+                                                "type" : "string",
+                                                "format": "date"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404" : {
+                        "description": "User Not Exists"
+                    }
+                }
+            }
+        }
+    }
+}
