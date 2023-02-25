@@ -9,9 +9,9 @@
         }
     },
     "paths": {
-        "/": {
+        "/users": {
             "post": {
-                "tags": ["User"],
+                "tags": ["Users"],
                 "summary": "Create a User",
                 "description": "Create a new User",
                 "requestBody": {
@@ -109,9 +109,9 @@
                 }
             }
         },
-    "/:user_id/admin": {
+    "/users/{user_id}/admin": {
         "patch": {
-            "tags": ["admin"],
+            "tags": ["Users"],
                 "summary": "User admin",
                 "description": "New User admin",
                 "requestBody": {
@@ -141,9 +141,9 @@
                 }
         }
     },
-    "/:user_id": {
-        "post": {
-            "tags": ["User"],
+    "/users/{user_id}": {
+        "get": {
+            "tags": ["Users"],
                 "summary": "User information",
                 "description": "All user information",
                 "requestBody": {
